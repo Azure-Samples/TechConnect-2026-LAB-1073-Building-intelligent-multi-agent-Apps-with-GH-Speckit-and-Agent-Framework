@@ -533,94 +533,100 @@ After running `/speckit.specify`, you'll get a comprehensive specification simil
 <summary>Click to expand example</summary>
 
 ```markdown
-# Feature 001: Customer Support Agent
+# Feature Specification: Customer Support AI Agent
 
-## Overview
+**Feature Branch**: `001-customer-support-agent`  
+**Created**: January 5, 2026
+**Status**: Draft  
+**Input**: User description: "Build an AI agent for customer service using Microsoft Agent Framework that will be deployed to Foundry. The agent helps retail customers resolve common issues: (1) Look up order status and tracking information by customer account or order ID, (2) Check return/refund eligibility and initiate returns with automatic return labels, (3) Track refund status and provide timeline, (4) Escalate complex issues to human support with full conversation context."
 
-**Name:** Customer Support Agent for E-Commerce Platform  
-**ID:** 001  
-**Description:** AI agent that resolves common customer issues (order status, returns, refunds) 
-and escalates complex issues to human support specialists.
+## User Scenarios & Testing *(mandatory)*
 
-**Business Value:**
-- Reduce support ticket volume by 40%
-- Improve first-contact resolution rate
-- Provide 24/7 support without additional staffing
+### User Story 1 - Order Status Inquiry Resolution (Priority: P1)
+
+A retail customer wants to quickly find the current status of their order and tracking information. They may have misplaced their order confirmation or need to share tracking details with others. This is the most common customer service request and directly impacts customer satisfaction and reduces support workload.
+
+**Why this priority**: Order inquiries represent the majority of customer service requests. Automating this resolution provides immediate value by reducing support team workload by 30-40% and satisfying customer expectations for self-service.
+
+**Independent Test**: Can be fully tested by submitting an order ID or account number and verifying that the agent returns accurate order status, estimated delivery date, and tracking information without human intervention. Delivers immediate customer satisfaction.
+
+**Acceptance Scenarios**:
+
+1. **Given** a customer with an active order, **When** customer provides order ID, **Then** agent returns order status (processing/shipped/delivered), carrier, tracking number, and estimated delivery date
+2. **Given** a customer who doesn't remember their order ID, **When** customer provides account email/phone, **Then** agent retrieves recent orders and customer selects the one they're inquiring about
+3. **Given** an order with exception status, **When** customer queries order status, **Then** agent explains the delay/issue and provides next steps (e.g., "Your order is delayed due to carrier congestion. Estimated new delivery: Jan 12")
+4. **Given** a customer asking about tracking, **When** customer provides order ID, **Then** agent provides carrier name, tracking number, and link to track real-time updates
 
 ---
 
-## User Stories
+### User Story 2 - Return and Refund Processing (Priority: P1)
 
-### US-001: Check Order Status
+A retail customer wants to understand if their purchase is returnable and needs to initiate a return without calling support. This includes determining refund eligibility, automatically generating return labels, and establishing clear return timeline expectations.
 
-**As a** customer  
-**I want to** ask the agent about my order status  
-**So that** I know when my items will arrive
+**Why this priority**: Returns and refunds are critical to customer satisfaction and brand loyalty. Enabling customers to self-serve return initiation reduces support calls while ensuring compliance with return policies. Second-most common inquiry type.
 
-**Acceptance Criteria:**
-- [ ] Agent retrieves correct order from database
-- [ ] Agent provides shipping status within 5 seconds
-- [ ] Agent provides estimated delivery date if available
-- [ ] Agent offers alternative help if order not found
+**Independent Test**: Can be fully tested by providing an order ID, receiving eligibility determination, generating a return label, and confirming return initiation without human support. Delivers measurable reduction in refund-related support tickets.
 
-**Example Interaction:**
-Customer: "When will my order arrive?"
-Agent: "I found your order #12345. It shipped on Jan 2 and 
-       will arrive by Jan 7. You can track it here: [link]"
+**Acceptance Scenarios**:
 
-### US-002: Initiate Return
+1. **Given** an order within the return window, **When** customer requests to initiate return, **Then** agent confirms eligibility, explains condition requirements, and offers automatic return label generation
+2. **Given** an order outside return window, **When** customer requests return, **Then** agent explains why return is not eligible but offers alternative resolutions (discount, store credit, escalation)
+3. **Given** a return initiated by customer, **When** agent generates return label, **Then** customer receives shipping label (email/SMS/in-app) with return address and instructions
+4. **Given** a return with special conditions (oversized item, hazardous material), **When** customer initiates return, **Then** agent explains special handling requirements and adjusted refund timeline
+5. **Given** a damaged/defective product return, **When** customer describes issue, **Then** agent asks clarifying questions and may offer instant refund or replacement as alternative
 
-**As a** customer with a defective/unwanted item  
-**I want to** start a return without calling support  
-**So that** I can save time and process returns quickly
+---
 
-**Acceptance Criteria:**
-- [ ] Agent checks if order is eligible for return
-- [ ] Agent initiates return process (creates return ID)
-- [ ] Agent provides return shipping label
-- [ ] Agent confirms refund timeline
+### ... Additional User Stories ...
 
-**Example Interaction:**
-Customer: "I want to return my shirt"
-Agent: "I found your order #12345. Your shirt (size L) is eligible 
-       for return. I've created return #R-999. Here's your shipping 
-       label: [link]. You'll receive your refund within 5 business days."
+---
 
-### US-003: Check Refund Status
+### Edge Cases
 
-**As a** customer who initiated a return  
-**I want to** check when my refund will arrive  
-**So that** I can plan my budget
+- What happens when a customer provides an incorrect order ID multiple times? Agent should offer alternative lookup methods and escalate if customer cannot verify identity.
+- How does system handle orders with multiple shipments? Agent should clarify which shipment customer is asking about and provide tracking for each.
+- What happens when return label generation fails? Agent should explain the issue and provide alternative (email label, print from account portal, or escalate).
+- ... additional edge cases ...
 
-**Acceptance Criteria:**
-- [ ] Agent finds return associated with customer
-- [ ] Agent provides current refund status
-- [ ] Agent provides refund amount and timeline
-- [ ] Agent offers escalation if refund is delayed
+## Requirements *(mandatory)*
 
-**Example Interaction:**
-Customer: "Where's my refund?"
-Agent: "Your return #R-999 arrived at our warehouse on Jan 5. 
-       Refund of $50 will process on Jan 10. You'll see it in 
-       your account by Jan 12."
+### Functional Requirements
 
-### US-004: Escalate Complex Issue
+- **FR-001**: Agent MUST accept natural language customer inquiries in text format and understand intent ("Where's my order?", "How do I return this?", "Is it refunded yet?")
+- **FR-002**: Agent MUST retrieve order information (status, tracking, estimated delivery) from backend order management system using customer account ID or order ID
+- **FR-003**: Agent MUST verify customer identity before sharing sensitive information (order details, personal information) using account email, phone, or order ID verification
+- ... additional functional requirements ...
 
-**As a** customer with an unusual problem  
-**I want to** talk to a human support specialist  
-**So that** I can get personalized help
+### Key Entities
 
-**Acceptance Criteria:**
-- [ ] Agent recognizes when issue exceeds its capability
-- [ ] Agent transfers conversation to available human specialist
-- [ ] Human specialist receives full conversation context
-- [ ] Customer doesn't have to repeat their issue
+- **Customer**: Individual making the inquiry with account ID, email, phone number, identity verification status, account creation date
+- **Order**: Purchase record with order ID, customer ID, order date, items, prices, shipping address, delivery address, order status, tracking information
+- **Return**: Return request record with return ID, order ID, return reason, return eligibility, return label, return shipping status, inspection date
+- **Refund**: Financial transaction record with refund ID, return ID, refund amount, original payment method, processing status, estimated/actual credit date
+- **Conversation**: Multi-turn dialog record with customer ID, message history, context (current order/return being discussed), escalation flag
 
-**Example Interaction:**
-Customer: "I was charged twice!"
-Agent: "I'm detecting a potential billing error that needs 
-       specialist review. I'm connecting you to a human specialist 
-       who has your full order history. One moment please..."
+## Success Criteria *(mandatory)*
+
+### Measurable Outcomes
+
+- **SC-001**: 70% of customer inquiries are resolved without escalation to human support
+- **SC-002**: First response time is under 5 seconds for 95% of inquiries
+- **SC-003**: Customer satisfaction rating is ≥4.2/5.0 for agent-resolved inquiries
+- ... additional success criteria ...
+
+## Assumptions
+
+- Backend APIs for order management, customer data, and refund processing are available and documented
+- Customer data (email, phone, order history) is current and accurate in backend system
+- Return policies and refund timelines are configured in backend and accessible to agent
+- ... additional assumptions ...
+
+## Out of Scope
+
+- Visual product returns or photo upload for damage verification (requires future capability)
+- Customization of return policies per customer or account tier
+- Inventory management or stock availability queries
+- ... additional out-of-scope items ...
 
 ---
 
@@ -649,25 +655,7 @@ Agent: "I'm detecting a potential billing error that needs
 
 ---
 
-### Scenario 2: Unhappy Path - Ineligible Return
-
-**Setup:** Customer attempts to return item outside return window
-
-**Actions:**
-1. Customer asks: "Can I return my order from 3 months ago?"
-2. Agent retrieves order and checks return window
-3. Agent determines order is outside 30-day window
-4. Agent explains policy and offers alternatives
-
-**Expected Outcome:**
-- Return is denied gracefully
-- Alternative solutions are offered (e.g., discount on next order)
-- Customer is satisfied or escalated
-
-**Success Metrics:**
-- ✓ Policy is clearly explained
-- ✓ Customer is offered path forward
-- ✓ Escalation triggers if customer requests human help
+### ... Additional Acceptance Scenarios ...
 
 ---
 
