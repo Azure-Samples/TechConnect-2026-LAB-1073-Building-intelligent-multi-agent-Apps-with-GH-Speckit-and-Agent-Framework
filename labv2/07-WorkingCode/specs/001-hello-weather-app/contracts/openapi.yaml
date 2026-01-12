@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: HelloWeather Streaming API
+  version: 0.1.0
+  description: >-
+    Minimal endpoints for the HelloWeather demo. The POST endpoint streams
+    Server-Sent Events that mirror WeatherAgent and CityAgent progress and a
+    final combined tip with the required disclaimer.
+servers:
+  - url: http://localhost:8000
+paths:
+  /:
+    get:
+      summary: Render HelloWeather form
+      operationId: getIndex
+      responses:
+        '200':
+          description: HTML page with introduction form and streaming timeline area.
+          content:
+            text/html:
+              schema:
+                type: string
+  /api/session:
+    post:
+      summary: Start concurrent WeatherAgent and CityAgent run
+      operationId: postSession
+      description: >-
+        Validates the user's one-sentence self introduction (which must contain a
+        city name), then begins concurrent orchestration of WeatherAgent and
+        CityAgent. Responses stream as SSE events until the final combined tip
+        with disclaimer is delivered.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - introduction
+              properties:
+                introduction:
+                  type: string
+                  maxLength: 200
+                  description: One-sentence self introduction that includes the city name.
+      responses:
+        '200':
+          description: Server-Sent Events stream of agent updates and final tip.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/event-stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
+      callbacks:
+        stream:
+          '{$request.body#/introduction}':
+            get:
+              summary: Stream events for this submission (conceptual SSE flow)
+              responses:
+                '200':
+                  description: Sequence of events emitted while agents run.
+                  content:
+                    text/event-stream:
+                      schema:
+                        type: string
+                        example: |
+                          event: info
+                          data: "Hi Sam! WeatherAgent is fetching an approximate forecast..."
+
+                          event: update
+                          data: "WeatherAgent: Expect a breezy, cool evening in Dublin."
+
+                          event: update
+                          data: "CityAgent: Check the Luas schedules for late-night trams."
+
+                          event: final
+                          data: >-
+                            "In Dublin tonight, expect a breezy, cool evening and keep an eye on the
+                            Luas schedules for late-night trams. information is approximate—verify
+                            locally before planning."
+        
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+    StreamEvent:
+      type: object
+      properties:
+        agent:
+          type: string
+          enum: [system, weather, city, aggregator]
+        eventType:
+          type: string
+          enum: [info, update, heartbeat, degraded, final]
+        payload:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
