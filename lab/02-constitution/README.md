@@ -61,29 +61,31 @@ In GitHub Spec Kit, the constitution defines the guardrails that every agent mus
 - **If any clause feels off, ask GitHub Copilot in chat to redraft the section before escalating—Copilot wrote the first draft, so it should be able to lawyer itself faster than explaining the loophole to your instructor.**
 - Keep a revision log so downstream phases understand which guardrails changed and why.
 
+Proceed to [03-specification](../03-specification/README.md) once the above steps are complete.
+
 ## Sample Constitution Reference (Do Not Copy)
-> Based on the HelloWeather implementation in 07-WorkingCode. Treat as inspiration and adjust before adopting.
+> <em> Based on the HelloWeather implementation in [07-WorkingCode](https://github.com/Azure-Samples/TechConnect-2026-LAB-1073-Building-intelligent-multi-agent-Apps-with-GH-Speckit-and-Agent-Framework). Treat as inspiration only. </em>
 
-### Core Principles
-- **Safety and tone assurance**: Keep responses kind, helpful, and concise. Avoid medical or legal advice and always append "information is approximate—verify locally before planning."
-- **Truthful Azure-sourced guidance**: WeatherAgent and CityAgent must rely only on Azure OpenAI reasoning. No hardcoded facts, cached tables, or external APIs.
-- **Respectful input transparency**: Collect only a one-sentence self introduction and a city once per session. Explain limitations before delivering guidance.
-- **Microsoft Agent Framework discipline**: Implement agent logic in Python using Microsoft Agent Framework with Azure OpenAI models provisioned through Microsoft Foundry. Do not add unmanaged AI dependencies.
-- **Concurrent orchestration fidelity**: Run WeatherAgent and CityAgent in parallel via ConcurrentBuilder, stream progress, merge results, enforce the sub-60-word response, and add a polite note when an agent fails.
-
-### Purpose and Experience Contract
-- Deliver a friendly HelloWeather greeting that elicits the intro and city.
-- Return one combined tip blending weather and city guidance with the required disclaimer.
-- Showcase parallel agent execution and streaming aggregation to the end user.
-
-### Agent Roles and Delivery Criteria
-- **WeatherAgent**: Produce a one to two sentence approximate weather tip for the chosen city using Azure OpenAI only.
-- **CityAgent**: Produce one concise sentence of city guidance (transit, neighborhood, timing, or safety) using Azure OpenAI only.
-- **Aggregator**: Stream intermediate updates, consolidate them into a single concise message, remove duplication, and flag degraded output with a courteous notice.
-- **Success criteria**: Parallel execution with streaming, graceful degradation on agent failure, final response below roughly 60 words including greeting, insight, and disclaimer.
-- **Non-goals**: Real-time meteorological accuracy, geolocation, or integration with external weather or city services.
-
-### Governance
-This constitution acts as the authoritative contract for HelloWeather delivery. Plans, specs, tasks, and code reviews must demonstrate compliance, confirming the disclaimer, concurrency pattern, dependency boundaries, and absence of hardcoded data. Amendments require maintainer consensus, an impact assessment on active work, and synchronized template updates. Use semantic versioning (MAJOR for breaking changes, MINOR for new principles, PATCH for clarifications). Run compliance reviews before merging any change to keep principles verifiable through tests and runtime instrumentation.
-
-**Version**: _Update with your release number_ | **Ratified**: _YYYY-MM-DD_ | **Last Amended**: _YYYY-MM-DD_
+> ### Core Principles
+> - **Safety and tone assurance**: Keep responses kind, helpful, and concise. Avoid medical or legal advice and always append "information is approximate—verify locally before planning."
+> - **Truthful Azure-sourced guidance**: WeatherAgent and CityAgent must rely only on Azure OpenAI reasoning. No hardcoded facts, cached tables, or external APIs.
+> - **Respectful input transparency**: Collect only a one-sentence self introduction and a city once per session. Explain limitations before delivering guidance.
+> - **Microsoft Agent Framework discipline**: Implement agent logic in Python using Microsoft Agent Framework with Azure OpenAI models provisioned through Microsoft Foundry. Do not add > unmanaged AI dependencies.
+> - **Concurrent orchestration fidelity**: Run WeatherAgent and CityAgent in parallel via ConcurrentBuilder, stream progress, merge results, enforce the sub-60-word response, and add a > polite note when an agent fails.
+> 
+> ### Purpose and Experience Contract
+> - Deliver a friendly HelloWeather greeting that elicits the intro and city.
+> - Return one combined tip blending weather and city guidance with the required disclaimer.
+> - Showcase parallel agent execution and streaming aggregation to the end user.
+> 
+> ### Agent Roles and Delivery Criteria
+> - **WeatherAgent**: Produce a one to two sentence approximate weather tip for the chosen city using Azure OpenAI only.
+> - **CityAgent**: Produce one concise sentence of city guidance (transit, neighborhood, timing, or safety) using Azure OpenAI only.
+> - **Aggregator**: Stream intermediate updates, consolidate them into a single concise message, remove duplication, and flag degraded output with a courteous notice.
+> - **Success criteria**: Parallel execution with streaming, graceful degradation on agent failure, final response below roughly 60 words including greeting, insight, and disclaimer.
+> - **Non-goals**: Real-time meteorological accuracy, geolocation, or integration with external weather or city services.
+> 
+> ### Governance
+> This constitution acts as the authoritative contract for HelloWeather delivery. Plans, specs, tasks, and code reviews must demonstrate compliance, confirming the disclaimer, concurrency > pattern, dependency boundaries, and absence of hardcoded data. Amendments require maintainer consensus, an impact assessment on active work, and synchronized template updates. Use > semantic versioning (MAJOR for breaking changes, MINOR for new principles, PATCH for clarifications). Run compliance reviews before merging any change to keep principles verifiable > through tests and runtime instrumentation.
+> 
+> **Version**: _Update with your release number_ | **Ratified**: _YYYY-MM-DD_ | **Last Amended**: _YYYY-MM-DD_

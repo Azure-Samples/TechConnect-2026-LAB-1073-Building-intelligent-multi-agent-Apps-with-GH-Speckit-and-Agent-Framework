@@ -91,6 +91,8 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
 - **If something breaks, recruit GitHub Copilot in chat to triage and suggest fixes before paging a proctor or instructor—after all, Copilot wrote the code, so it should fix its own mess faster than it can explain itself to a human.**
 - Keep responsibility squarely with you: review security, compliance, and data handling, and document any manual changes you make.
 
+** Congratulations! The Labs are complete. **
+
 ## Sample Implementation Reference (Do Not Copy)
 - FastAPI entrypoint and streaming route in [hello-weather-lab/07-WorkingCode/app.py](hello-weather-lab/07-WorkingCode/app.py).
 - Agent definitions, concurrent workflow, and aggregator helpers in [hello-weather-lab/07-WorkingCode/agents.py](hello-weather-lab/07-WorkingCode/agents.py).

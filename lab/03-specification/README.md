@@ -64,6 +64,8 @@ A minimal web app (FastAPI + HTML form) that asks for a one-sentence self-introd
 - **If a requirement seems fishy, loop Copilot back in to rewrite or tighten it before tapping a proctor—Copilot drafted the spec, so it should debug its own plot holes faster than a human can read three more user stories.**
 - Track accepted edits so downstream planners know which assumptions changed and who approved them.
 
+Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
+
 ## Sample Specification Reference (Do Not Copy)
 > Adapted from 07-WorkingCode/specs/001-hello-weather-app/spec.md. Use this structure, but update priorities, tests, and metrics to match current goals.
 

@@ -64,6 +64,8 @@ In GitHub Spec Kit, the `/speckit.tasks` phase turns the plan into ordered, test
 - **If a task feels unclear, ask GitHub Copilot to tighten or split it before pinging the proctor—Copilot drafted the checklist, so it should untangle its own TODO spaghetti faster than a human can guess what T042 means.**
 - Capture any manual edits so future iterations know which tasks were reworded, merged, or dropped.
 
+Proceed to [06-implementation](../06-implementation/README.md) once the above steps are complete.
+
 ## Sample Task Structure (Do Not Copy)
 > Adapted from 07-WorkingCode/specs/001-hello-weather-app/tasks.md. Update IDs, file paths, and wording to reflect your plan.
 

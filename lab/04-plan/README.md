@@ -73,6 +73,8 @@ In GitHub Spec Kit, the plan turns the specification into a concrete roadmap. It
 - **If a timeline slips or a task looks magical, have GitHub Copilot revise its own roadmap before sounding the alarm—Copilot charted the course, so it should steer the ship faster than explaining detours to your instructor.**
 - Record any manual edits so the tasks phase inherits accurate sequencing and ownership notes.
 
+Proceed to [05-tasks](../05-tasks/README.md) once the above steps are complete.
+
 ## Sample Plan Reference (Do Not Copy)
 > Adapted from 07-WorkingCode/specs/001-hello-weather-app/plan.md. Update paths, metrics, and risks to match your current objectives.
 
