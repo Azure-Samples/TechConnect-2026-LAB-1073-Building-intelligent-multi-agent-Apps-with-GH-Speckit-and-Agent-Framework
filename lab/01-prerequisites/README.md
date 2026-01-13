@@ -1,6 +1,5 @@
 # 01 — Pre‑Requisites
 
-test change 1
 Establish the tools and workspace needed for the Hello Weather lab before drafting any specs or plans.
 
 ## Phase Goals
@@ -13,33 +12,41 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 - Activated virtual environment seeded with project dependencies.
 - Spec Kit folder scaffold ready for prompts.
 
-## Step 1 — Verify System Requirements
+## System Requirements
 - Windows 10/11, macOS, or Ubuntu ≥ 20.04
 - Python 3.10+
 - Git
 - Azure CLI
 - Visual Studio Code
+- Install or confirm these extensions:
+    - Python
+    - Pylance
+    - GitHub Copilot
+    - GitHub Copilot Chat
+    - Azure Tools (optional, but useful for portal interactions)
 
-Run quick spot checks:
+## Step 1: Run quick spot checks (Optional):
 ```bash
 python --version
 git --version
 az version
-```
-Optional Azure login validation:
-```bash
 az login
 ```
 
 ## Step 2 — Prepare VS Code
-Install or confirm these extensions:
-- Python
-- Pylance
-- GitHub Copilot
-- GitHub Copilot Chat
-- Azure Tools (optional, but useful for portal interactions)
+Ensure the below Visual Studio Code extensions are installed
+>![Extensions](.\Images\1.png)
 
-## Step 3 — Create the Workspace Folder and Open VS Code
+## Step 3 — Create the Workspace Folder
+- Launch a new terminal in VS Code
+![alt text](.\Images\2.png)
+- Create a folder under C:\Lab (eg., hello-weather-agent)
+- Open the folder
+
+[] Navigate to https://www.microsoftazurepass.com/ and click on the start button.
+     ![image0001.jpg](.\Images\2.png)
+
+Create a folder under C:\Lab and Open in VS Code
 ```bash
 mkdir hello-weather-agent
 cd hello-weather-agent
