@@ -23,8 +23,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
   - GitHub Copilot
   - GitHub Copilot Chat
   - Azure Tools (optional, but useful for portal interactions)
-<img width="523" height="747" alt="image" src="https://github.com/user-attachments/assets/3da96dfc-fc17-46bf-b474-b9a965e6ea66" />
-
+>![alt text](Extensions.png)
 
 
 ## Step 1 — Verify System Requirements (Optional)
