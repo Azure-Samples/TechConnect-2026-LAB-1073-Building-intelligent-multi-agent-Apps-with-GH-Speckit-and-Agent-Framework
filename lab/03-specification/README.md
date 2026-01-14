@@ -1,4 +1,4 @@
-# 03 — Specification
+# Module 03 — Specification
 
 ## Specification Overview
 
@@ -12,14 +12,14 @@ In GitHub Spec Kit, the specification captures the user journeys and functional 
 - Success criteria that can be validated through manual or automated tests.
 - Assumptions and open questions that shape downstream planning.
 
-## Step 1: Generate the Specification with GitHub Copilot:
+## Step 1: Generate the Specification with GitHub Copilot
 
 - [ ] In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enabled.
-- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Shift+I`).
 - [ ] Paste the template prompt below (it includes `/speckit.specify`) and adapt the TODO placeholders to match your project.
 - [ ] Hit **Enter** in Github Copilot to draft `spec.md`.
 
-    ![SpecKit](.\Images\1.png)
+    ![SpecKit](./images/1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -56,18 +56,19 @@ A minimal web app (FastAPI + HTML form) that asks for a one-sentence self-introd
 - Demonstrates Spec Kit + Agent Framework best practices for “hello world” agent prototypes.
 - Workshop facilitators Step 2: demonstrate fan-out/fan-in orchestration and streaming without pre-seeded data.
 ```
+
 You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
 ## Step 2: After Generating the Specification
 
-- The generated file appears in `specs\001-hello-weather-app/spec.md`; look in VSCode Explorer for the specific file.
+- [ ] The generated file appears in `specs\001-hello-weather-app/spec.md`; look in VSCode Explorer for the specific file.
 
-    ![SpecKit](.\Images\2.png)
+    ![SpecKit](./images/2.png)
 
-- Verify user journeys cover input validation, concurrent streaming, and final aggregation.
-- Confirm each functional requirement ties back to a constitution principle.
-- Check that constraints and success criteria are measurable and free of implementation specifics.
-- Regenerate if Copilot introduces static data, external APIs, or long narrative paragraphs.
+- [ ] Verify user journeys cover input validation, concurrent streaming, and final aggregation.
+- [ ] Confirm each functional requirement ties back to a constitution principle.
+- [ ] Check that constraints and success criteria are measurable and free of implementation specifics.
+- [ ] Regenerate if Copilot introduces static data, external APIs, or long narrative paragraphs.
 
 ## Human-in-the-Loop Disclaimer
 

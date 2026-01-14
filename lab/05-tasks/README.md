@@ -1,4 +1,4 @@
-# 05 — Tasks
+# Module 05 — Tasks
 
 ## Tasks Overview
 
@@ -11,13 +11,13 @@ In GitHub Spec Kit, the `/speckit.tasks` phase turns the plan into ordered, test
 - Testing instructions when a story demands verification.
 - Dependencies and checkpoints so teams can slice delivery per story.
 
-## Generate Tasks with GitHub Copilot
+## Step 1: Generate Tasks with GitHub Copilot
 
-- [ ] In the VS Code - Goto the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] In the VS Code - Goto the Copilot Chat panel (sidebar icon or `Ctrl+Shift+I`).
 - [ ] Paste the prompt template below (it also includes `/speckit.tasks`).
 - [ ] Hit **Enter** in Github Copilot to draft `tasks.md`.
 
-    ![SpecKit](.\Images\1.png)
+    ![SpecKit](./images/1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -55,14 +55,14 @@ In GitHub Spec Kit, the `/speckit.tasks` phase turns the plan into ordered, test
 ## Implementation Strategy
 - Summarize how to deliver MVP (Phases 1–3), deepen functionality (Phases 4–5), and polish (Phase 6).
 ```
+
 You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
 ## Step 2: After Generating Tasks
 
 - [ ] The generated file appears in `specs\001-hello-weather-app/tasks.md`; look in VSCode Explorer for the specific file.
 
-    ![SpecKit](.\Images\2.png)
-
+    ![SpecKit](./images/2.png)
 
 - [ ] Confirm tasks stay aligned with user stories from `spec.md` and milestones in `plan.md`.
 - [ ] Ensure no task introduces static data, external APIs, or other constitution violations.

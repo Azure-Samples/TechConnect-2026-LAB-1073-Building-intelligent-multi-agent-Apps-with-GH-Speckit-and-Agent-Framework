@@ -1,4 +1,4 @@
-# 04 — Plan
+# Module 04 — Plan
 
 ## Planning Overview
 
@@ -13,14 +13,14 @@ In GitHub Spec Kit, the plan turns the specification into a concrete roadmap. It
 - Resilience, observability, and test strategy notes.
 - Post-generation review steps and sample structure.
 
-## Generate the Plan with GitHub Copilot
+## Step 1: Generate the Plan with GitHub Copilot
 
 - [ ] In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat are still enabled and authenticated.
-- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Shift+I`).
 - [ ] Paste the prompt template below (it includes `/speckit.plan`) and adapt the TODOs for your project.
 - [ ] Hit **Enter** in Github Copilot to draft `plan.md`.
 
-    ![SpecKit](.\Images\1.png)
+    ![SpecKit](./images/1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -65,13 +65,14 @@ In GitHub Spec Kit, the plan turns the specification into a concrete roadmap. It
 - Run `uvicorn app:app --reload` locally.
 - Test known/unknown cities and invalid intros to confirm no static lookups.
 ```
+
 You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
 ## Step 2: After Generating the Plan
 
 - [ ] The generated file appears in `specs\001-hello-weather-app/plan.md`; look in VSCode Explorer for the specific file.
 
-    ![SpecKit](.\Images\2.png)
+    ![SpecKit](./images/2.png)
 
 - [ ] Verify environment steps match your dev setup (Python version, dependencies, authentication flow).
 - [ ] Confirm the layout aligns with how you want to organize your code and templates.

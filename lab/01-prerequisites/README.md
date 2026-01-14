@@ -1,4 +1,4 @@
-# MODULE 01 — Pre‑Requisites
+# Module 01 — Pre‑Requisites
 
 Establish the tools and workspace needed for the Hello Weather lab before drafting any specs or plans.
 
@@ -35,7 +35,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 - [ ] Open Visual Studio Code
 - [ ] Launch a new terminal in VS Code
 
-  ![NewTerminal](.\Images\2.png)
+  ![NewTerminal](./images/2.png)
 
 - [ ] Execute the below commands in terminal
 
@@ -47,13 +47,13 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
   The output would be **similar** to the below:
 
-    ![Output](.\Images\3.png)
+    ![Output](./images/3.png)
 
 ## Step 2 — Prepare VS Code
 
 - [ ] Ensure the below Visual Studio Code extensions are installed
 
-  ![Extensions](.\Images\1.png)
+  ![Extensions](./images/1.png)
 
 ## Step 3 — Create the Workspace Folder
 
@@ -99,15 +99,16 @@ This will create the virtual environment. Leave the terminal window active for s
   ```bash
   uvx --from git+https://github.com/github/spec-kit.git specify init --here
   ```
+
   Select/type **Y** for the warning on overwriting existing files
 
 - [ ] In the "Choose your AI Assitant" prompt, select copilot (Github Copilot).
 
-  ![Assistant](.\Images\4.png)
+  ![Assistant](./images/4.png)
 
 - [ ] In the "Choose script type", select ps (PowerShell).
 
-  ![Script](.\Images\5.png)
+  ![Script](./images/5.png)
 
 **You may see errors/warnings related to Git which can be ignored.**
 
@@ -124,7 +125,7 @@ This will create the virtual environment. Leave the terminal window active for s
 
 - [ ] You should see the below SpecKit prompts. This confirms that the above installs completed successfully:
 
-  ![Speckit](.\Images\6.png)
+  ![Speckit](./images/6.png)
 
 - [ ] Confirm the following directories appear:
   - [ ] speckit.constitution/
@@ -133,16 +134,19 @@ This will create the virtual environment. Leave the terminal window active for s
   - [ ] speckit.tasks/
   - [ ] speckit.implement/
 
+- [ ] Ensure Github Copilot is open and available.
+
 - [ ] Ensure the **GPT-5-Codex(Preview)** model is selected as shown in the below image.
 
-  ![Speckit](.\Images\7.png)
+  ![Speckit](./images/7.png)
   
+## Step 7 — Create Microsoft Foundry Resource and Deploy a Model (Optional)
 
-## Step 7 — Create Microsoft Foundry Resource and Deploy a Model
+- These resources should already be created in the lab vm. Skip this step if you are able to see those resources in the subscription. [REMOVE STEP ONCE ARM DEPLOYMENT IS CONFIRMED]
 
 - In the Lab VM, Get the Subscription and User details for the instructions below, see below image for details.
 
-  ![ResourcePage](.\Images\8.png)
+  ![ResourcePage](./images/8.png)
 
 - [ ] **Set up prerequisites**
 

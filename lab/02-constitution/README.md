@@ -1,4 +1,4 @@
-# 02 — Constitution
+# Module 02 — Constitution
 
 ## Constitution Overview
 
@@ -16,14 +16,13 @@ In GitHub Spec Kit, the constitution defines the guardrails that every agent mus
 
 - [ ] In the VS Code window, opened previously, ensure the terminal root is `hello-weather-agent` in the Terminal console.
 
-    ![Speckit](.\Images\1.png)
+    ![Speckit](./images/1.png)
 
-
-- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Shift+I`).
 - [ ] In the chat input, paste the placeholder prompt below (it includes the `/speckit.constitution` command) and edit it with project specifics.
 - [ ] Hit **Enter** in Github Copilot to draft a constitution markdown file.
 
-    ![Speckit](.\Images\2.png)
+    ![Speckit](./images/2.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -55,12 +54,14 @@ In GitHub Spec Kit, the constitution defines the guardrails that every agent mus
 - Real-time meteorological accuracy or external API integration.
 - Multi-paragraph outputs.
 ```
+
 You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
+
 ## Step 2: After Generating the Constitution
 
 - [ ] The generated file appears in `.specify/memory/constitution.md`.
 
-    ![Speckit](.\Images\3.png)
+    ![Speckit](./images/3.png)
 
 - [ ] Verify tone, success criteria, and non-goals accurately mirror stakeholder expectations.
 - [ ] Confirm no unintended dependencies or forbidden data sources slipped in.
