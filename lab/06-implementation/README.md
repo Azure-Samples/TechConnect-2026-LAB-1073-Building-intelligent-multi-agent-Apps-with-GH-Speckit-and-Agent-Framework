@@ -1,9 +1,11 @@
 # 06 — Implementation
 
 ## Implementation Overview
+
 In GitHub Spec Kit, the implementation phase turns the plan and tasks into working code. The goal is to produce a minimal, readable solution that demonstrates the feature while honoring every constitutional guardrail.
 
 ## Implementation Contents
+
 - Source files updated or created during `/speckit.implement`.
 - Guidance for agents, orchestrators, and FastAPI endpoints.
 - Streaming and aggregation patterns, including fallback behavior.
@@ -11,13 +13,15 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
 - Links to reference implementations for further study.
 
 ## Generate the Implementation with GitHub Copilot
-1. In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enabled and authenticated.
-2. Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
-3. Paste the prompt template below (it includes `/speckit.implement`) and tailor any notes for your environment.
-4. Ask Copilot to generate or update the code. Review each file to confirm compliance with the plan, tasks, and constitution.
-5. Run the project locally and adjust the implementation as needed before committing.
+
+- [ ] In the VS Code, goto Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] Paste the prompt template below (it also includes `/speckit.implement`).
+- [ ] Hit **Enter** in Github Copilot to generate the actual code for the application.
+
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
+
 ```text
 /speckit.implement
 # Implement — HelloWeather Minimal Python Prototype
@@ -65,35 +69,67 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
 - Keep functions short, explicit, and well commented for workshop participants.
 - Avoid unused abstractions or premature optimizations; focus on clarity.
 ```
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
+## Step 2: After Generating the Implementation
 
-## After Generating the Implementation
-- Confirm the following files exist and align with the expectations below:
-  - app.py — FastAPI entrypoint with GET/POST routes and streaming response helpers; verify the POST handler validates inputs and streams the aggregator output.
-  - agents.py — Agent-framework bootstrap plus ConcurrentBuilder wiring; inspect aggregation logic and fallback handling for failures.
-  - templates/index.html — Workshop-friendly HTML form with intro and city fields; check the streaming output container renders incremental updates.
-  - .env or .env.example — Contains the Azure OpenAI settings; ensure no secrets are committed and that placeholder values match your deployment names.
-  - README.md (project root) — Updated quickstart mirroring the configuration and run steps in this phase.
-- Validate the project by working through these hands-on checks:
-  1. In VS Code, choose Terminal > New Terminal or press Ctrl+` to open an integrated shell.
-  2. Activate the virtual environment if needed: `.\.venv\Scripts\Activate.ps1` (PowerShell) or `source .venv/bin/activate` (WSL/Mac).
-  3. Install dependencies: `pip install -r requirements.txt` (skip if already installed).
-  4. Run the app: `uvicorn app:app --reload`.
-  5. Open http://127.0.0.1:8000 in a browser, enter a friendly intro and a city, then submit; confirm streamed content appears and ends with the disclaimer.
-  6. Trigger a degraded path by raising an exception inside one agent (temporary change) and verify the other agent’s message plus polite fallback displays.
-  7. Test validation by submitting an empty city and confirm the form shows a helpful error.
-  8. Return to the terminal and press Ctrl+C to stop Uvicorn when you finish.
-- Sanity-check logs for latency and error messages, and adjust instrumentation if you do not see expected entries.
-- Update documentation (README, quickstart, env example) to reflect actual behavior and configuration values.
-- Add or adjust tests if the implementation introduces new helpers or edge cases.
+### Output Check
+
+- [ ] Confirm the following files exist and align with the expectations below:
+  - [ ] app.py — FastAPI entrypoint with GET/POST routes and streaming response helpers; verify the POST handler validates inputs and streams the aggregator output.
+  - [ ] agents.py — Agent-framework bootstrap plus ConcurrentBuilder wiring; inspect aggregation logic and fallback handling for failures.
+  - [ ] templates/index.html — Workshop-friendly HTML form with intro and city fields; check the streaming output container renders incremental updates.
+  - [ ] .env or .env.example — Contains the Azure OpenAI settings; ensure no secrets are committed and that placeholder values match your deployment names.
+  - [ ] README.md (project root) — Updated quickstart mirroring the configuration and run steps in this phase.
+  
+      ![SpecKit](.\Images\2.png)
+    
+  
+### Execute the application
+
+*Perform below 3 instructions if only venv is not available.*
+
+- [ ] (optional) In VS Code, choose Terminal > New Terminal or press Ctrl+` to open an integrated shell.
+- [ ] (optional) Activate the virtual environment if needed: `.\.venv\Scripts\Activate.ps1` (PowerShell).
+- [ ] (optional) Install dependencies: `pip install -r requirements.txt`.
+
+
+
+[!CAUTION]
+> Please note that you may see occasionally compilation errors or execution errors as code is generated by AI. Read the [Guidance](#human-in-the-loop-disclaimer).
+
+- [ ] Create or modify the .env file to update using your openai deployment details
+
+    ![SpecKit](.\Images\3.png)
+
+- [ ] Run the app: `.venv\Scripts\uvicorn app:app --log-level debug`.
+- [ ] Open <http://127.0.0.1:8000> in a browser, enter a friendly intro and a city, then submit; confirm streamed content appears and ends with the disclaimer. Example - *I am Dennis from Austin, Texas, USA.*
+
+    ![SpecKit](.\images\4.png)
+    
+
+### Validations
+
+*Fully optional, only do it if you are a code freak.*
+
+- [ ] Test validation by submitting an empty city and confirm the form shows a helpful error. Example - *I am Dennis.*
+- [ ] Trigger a degraded path by raising an exception inside one agent (temporary change) and verify the other agent’s message plus polite fallback displays. *This requires code change, so we will leave you to your imagination*
+
+### Exit
+
+- [ ] Return to the terminal and press Ctrl+C to stop Uvicorn when you finish.
 
 ## Human-in-the-Loop Disclaimer
+
 - Treat every AI-generated artifact as a draft: read it, edit it, and run tests before trusting it anywhere near production.
 - **If something breaks, recruit GitHub Copilot in chat to triage and suggest fixes before paging a proctor or instructor—after all, Copilot wrote the code, so it should fix its own mess faster than it can explain itself to a human.**
 - Keep responsibility squarely with you: review security, compliance, and data handling, and document any manual changes you make.
 
-** Congratulations! The Labs are complete. **
+## Congratulations
 
-## Sample Implementation Reference (Do Not Copy)
+!!! Voila! Labs are now complete !!!
+
+## Appendix - Sample Implementation Reference (Do Not Copy)
+
 - FastAPI entrypoint and streaming route in [hello-weather-lab/07-WorkingCode/app.py](hello-weather-lab/07-WorkingCode/app.py).
 - Agent definitions, concurrent workflow, and aggregator helpers in [hello-weather-lab/07-WorkingCode/agents.py](hello-weather-lab/07-WorkingCode/agents.py).
 - Workshop-friendly HTML form and streamed output area in [hello-weather-lab/07-WorkingCode/templates/index.html](hello-weather-lab/07-WorkingCode/templates/index.html).

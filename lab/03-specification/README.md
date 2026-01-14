@@ -1,23 +1,28 @@
 # 03 — Specification
 
 ## Specification Overview
+
 In GitHub Spec Kit, the specification captures the user journeys and functional rules that drive the plan, tasks, and implementation phases. It translates the constitution’s guardrails into testable product behaviors without dipping into low-level code or file structure details.
 
 ## Specification Contents
+
 - User journeys and scenarios that describe the end-to-end experience.
 - Functional requirements tied to those journeys.
 - Constraints inherited from the constitution (data sources, tone, safety, concurrency).
 - Success criteria that can be validated through manual or automated tests.
 - Assumptions and open questions that shape downstream planning.
 
-## Generate the Specification with GitHub Copilot
-1. In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enabled and authenticated.
-2. Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
-3. Paste the template prompt below (it includes `/speckit.specify`) and adapt the TODO placeholders to match your project.
-4. Ask Copilot to draft `specification.md`. Review the output for alignment with the constitution and clarity.
-5. Save the refined specification inside `.specify/memory/` and mirror critical details into this README.
+## Step 1: Generate the Specification with GitHub Copilot:
+
+- [ ] In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enabled.
+- [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
+- [ ] Paste the template prompt below (it includes `/speckit.specify`) and adapt the TODO placeholders to match your project.
+- [ ] Hit **Enter** in Github Copilot to draft `spec.md`.
+
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
+
 ```text
 /speckit.specify
 # Functional Specification — HelloWeather
@@ -49,27 +54,37 @@ A minimal web app (FastAPI + HTML form) that asks for a one-sentence self-introd
 - Verified concurrent execution, streaming, and aggregation in telemetry or logs.
 - Consistent tone, prompt disclaimer, and adherence to the ≤ ~60-word limit.
 - Demonstrates Spec Kit + Agent Framework best practices for “hello world” agent prototypes.
-- Workshop facilitators demonstrate fan-out/fan-in orchestration and streaming without pre-seeded data.
+- Workshop facilitators Step 2: demonstrate fan-out/fan-in orchestration and streaming without pre-seeded data.
 ```
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
-## After Generating the Specification
-- The generated file appears in `.specify/memory/specification.md`; copy key sections into this README if you want a quick reference.
+## Step 2: After Generating the Specification
+
+- The generated file appears in `specs\001-hello-weather-app/spec.md`; look in VSCode Explorer for the specific file.
+
+    ![SpecKit](.\Images\2.png)
+
 - Verify user journeys cover input validation, concurrent streaming, and final aggregation.
 - Confirm each functional requirement ties back to a constitution principle.
 - Check that constraints and success criteria are measurable and free of implementation specifics.
 - Regenerate if Copilot introduces static data, external APIs, or long narrative paragraphs.
 
 ## Human-in-the-Loop Disclaimer
+
 - Inspect every Copilot-generated scenario, requirement, and metric to ensure they match stakeholder expectations before treating them as canonical.
 - **If a requirement seems fishy, loop Copilot back in to rewrite or tighten it before tapping a proctor—Copilot drafted the spec, so it should debug its own plot holes faster than a human can read three more user stories.**
-- Track accepted edits so downstream planners know which assumptions changed and who approved them.
+- Track edits and changes to keep track.
 
-Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
+## Congratulations
 
-## Sample Specification Reference (Do Not Copy)
+This module is now complete. Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
+
+## Appendix - Sample Specification Reference (Do Not Copy)
+>
 > Adapted from 07-WorkingCode/specs/001-hello-weather-app/spec.md. Use this structure, but update priorities, tests, and metrics to match current goals.
 
 ### User Story 1 — Collect Friendly Inputs (Priority: P1)
+
 - **Why**: Without validated inputs and expectation setting, no downstream agent orchestration can run and the required disclaimer would be missing.
 - **Independent Test**: Launch the form locally, submit valid and invalid inputs, and confirm the UI blocks invalid submissions while logging readiness for orchestration.
 - **Acceptance Scenarios**:
@@ -77,6 +92,7 @@ Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
   2. Given the user enters an intro that lacks a city or exceeds one sentence, when they press submit, then the form highlights validation errors without calling any agents.
 
 ### User Story 2 — Watch Agents Stream (Priority: P2)
+
 - **Why**: Streaming demonstrates the concurrency showcase goal and reassures users that progress is happening even before the final tip is ready.
 - **Independent Test**: Trigger orchestration with mocked Azure responses and confirm at least one update from each agent appears in the stream with timestamps and courteous tone.
 - **Acceptance Scenarios**:
@@ -84,6 +100,7 @@ Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
   2. Given CityAgent encounters a transient delay, when the timeout threshold is reached, then the stream shows a polite waiting note while WeatherAgent updates continue.
 
 ### User Story 3 — Receive Combined Tip (Priority: P3)
+
 - **Why**: The aggregated output is the primary value proposition, proving fan-out/fan-in orchestration and meeting workshop expectations.
 - **Independent Test**: Complete mock runs where both agents succeed, one fails, and both timeout to ensure the aggregator caps word count, removes duplicates, and injects polite notes.
 - **Acceptance Scenarios**:
@@ -91,11 +108,13 @@ Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
   2. Given CityAgent fails after retries, when WeatherAgent succeeds, then the final response mentions the city guidance degradation, shares the available weather insight, and still includes the disclaimer.
 
 ### Edge Cases
+
 - How does the system handle intros without a clear city or inputs that violate content policies?
 - What occurs if streaming fails mid-response or both agents exceed their timeout simultaneously?
 - How do we prevent duplicate or contradictory sentences when aggregating near-identical agent outputs?
 
 ### Functional Requirements (Sample)
+
 - **FR-001**: System must greet the user, collect a one-sentence self introduction and city, and acknowledge limitations before proceeding.
 - **FR-002**: System must orchestrate WeatherAgent and CityAgent concurrently via ConcurrentBuilder and stream intermediate updates to the client.
 - **FR-003**: System must generate a single combined tip under ~60 words, append the disclaimer "information is approximate—verify locally before planning," and avoid duplicate details.
@@ -106,12 +125,14 @@ Proceed to [04-plan](../04-plan/README.md) once the above steps are complete.
 - **FR-008**: System must emit structured logs proving concurrent execution, retry outcomes, and final aggregation decisions whenever the local server processes a session.
 
 ### Measurable Success Criteria (Sample)
+
 - **SC-001**: ≥95% of sessions deliver the combined tip in under 60 words and include the required disclaimer.
 - **SC-002**: Streaming of at least one agent update begins within 2 seconds of both inputs being submitted.
 - **SC-003**: Degradation notice is emitted for 100% of agent failures while still returning available insights.
 - **SC-004**: Telemetry confirms zero calls per session to non-Azure OpenAI data sources or static lookup tables.
 
 ### Assumptions (Sample)
+
 - Streaming updates appear as a vertically stacked timeline on the single-page form, avoiding complex frontend frameworks.
 - Azure OpenAI configuration (deployment names, region, keys) is available via environment variables and injected at runtime.
 - Local development server supports live reloading for demos; production hardening (auth, persistence) is out of scope per non-goals.
