@@ -20,7 +20,7 @@ In GitHub Spec Kit, the plan turns the specification into a concrete roadmap. It
 - [ ] Paste the prompt template below (it includes `/speckit.plan`) and adapt the TODOs for your project.
 - [ ] Hit **Enter** in Github Copilot to draft `plan.md`.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -65,12 +65,13 @@ In GitHub Spec Kit, the plan turns the specification into a concrete roadmap. It
 - Run `uvicorn app:app --reload` locally.
 - Test known/unknown cities and invalid intros to confirm no static lookups.
 ```
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
-## After Generating the Plan
+## Step 2: After Generating the Plan
 
 - [ ] The generated file appears in `specs\001-hello-weather-app/plan.md`; look in VSCode Explorer for the specific file.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\2.png)
 
 - [ ] Verify environment steps match your dev setup (Python version, dependencies, authentication flow).
 - [ ] Confirm the layout aligns with how you want to organize your code and templates.

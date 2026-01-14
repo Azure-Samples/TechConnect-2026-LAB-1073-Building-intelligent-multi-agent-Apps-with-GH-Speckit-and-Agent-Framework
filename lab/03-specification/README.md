@@ -12,14 +12,14 @@ In GitHub Spec Kit, the specification captures the user journeys and functional 
 - Success criteria that can be validated through manual or automated tests.
 - Assumptions and open questions that shape downstream planning.
 
-## Step 1: Generate the Specification with GitHub CoStep 1: piStep 1: lot
+## Step 1: Generate the Specification with GitHub Copilot:
 
-- [ ] In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enaStep 1: bled and authenticaStep 1: ted.
+- [ ] In the VS Code workspace you opened during the constitution phase, confirm GitHub Copilot and GitHub Copilot Chat remain enabled.
 - [ ] Open the Copilot Chat panel (sidebar icon or `Ctrl+Alt+Shift+I`).
 - [ ] Paste the template prompt below (it includes `/speckit.specify`) and adapt the TODO placeholders to match your project.
 - [ ] Hit **Enter** in Github Copilot to draft `spec.md`.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -56,12 +56,13 @@ A minimal web app (FastAPI + HTML form) that asks for a one-sentence self-introd
 - Demonstrates Spec Kit + Agent Framework best practices for “hello world” agent prototypes.
 - Workshop facilitators Step 2: demonstrate fan-out/fan-in orchestration and streaming without pre-seeded data.
 ```
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
 ## Step 2: After Generating the Specification
 
 - The generated file appears in `specs\001-hello-weather-app/spec.md`; look in VSCode Explorer for the specific file.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\2.png)
 
 - Verify user journeys cover input validation, concurrent streaming, and final aggregation.
 - Confirm each functional requirement ties back to a constitution principle.

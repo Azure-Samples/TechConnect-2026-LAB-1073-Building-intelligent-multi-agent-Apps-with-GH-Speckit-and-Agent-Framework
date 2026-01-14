@@ -17,7 +17,7 @@ In GitHub Spec Kit, the `/speckit.tasks` phase turns the plan into ordered, test
 - [ ] Paste the prompt template below (it also includes `/speckit.tasks`).
 - [ ] Hit **Enter** in Github Copilot to draft `tasks.md`.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -55,12 +55,14 @@ In GitHub Spec Kit, the `/speckit.tasks` phase turns the plan into ordered, test
 ## Implementation Strategy
 - Summarize how to deliver MVP (Phases 1–3), deepen functionality (Phases 4–5), and polish (Phase 6).
 ```
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
 
-## After Generating Tasks
+## Step 2: After Generating Tasks
 
 - [ ] The generated file appears in `specs\001-hello-weather-app/tasks.md`; look in VSCode Explorer for the specific file.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\2.png)
+
 
 - [ ] Confirm tasks stay aligned with user stories from `spec.md` and milestones in `plan.md`.
 - [ ] Ensure no task introduces static data, external APIs, or other constitution violations.

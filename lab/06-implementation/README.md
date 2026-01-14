@@ -18,7 +18,7 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
 - [ ] Paste the prompt template below (it also includes `/speckit.implement`).
 - [ ] Hit **Enter** in Github Copilot to generate the actual code for the application.
 
-    [IMAGE PLACEHOLDER](x.png)
+    ![SpecKit](.\Images\1.png)
 
 ### Copilot Prompt Template (Copy/Paste in Copilot)
 
@@ -69,8 +69,8 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
 - Keep functions short, explicit, and well commented for workshop participants.
 - Avoid unused abstractions or premature optimizations; focus on clarity.
 ```
-
-## After Generating the Implementation
+You will required to click on "Keep"/"Allow"/"Continue" in the chat window to as copilot works.
+## Step 2: After Generating the Implementation
 
 ### Output Check
 
@@ -81,7 +81,8 @@ In GitHub Spec Kit, the implementation phase turns the plan and tasks into worki
   - [ ] .env or .env.example — Contains the Azure OpenAI settings; ensure no secrets are committed and that placeholder values match your deployment names.
   - [ ] README.md (project root) — Updated quickstart mirroring the configuration and run steps in this phase.
   
-      [IMAGE PLACEHOLDER](x.png)
+      ![SpecKit](.\Images\2.png)
+      ![alt text](image.png)
   
 ### Execute the application
 

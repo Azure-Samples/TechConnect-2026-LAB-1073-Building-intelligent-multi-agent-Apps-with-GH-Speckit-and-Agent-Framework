@@ -65,7 +65,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
   cd hello-weather-agent
   ```
 
-- [ ] Launch **Visual Studio Code** from this folder using the below command
+- [ ] Launch **Visual Studio Code** from this folder using the below command and click the checkbox and "Yes, I trust the authors"
 
   ```bash
   code . --reuse-window
@@ -73,14 +73,14 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 ## Step 4 — Create and Activate a Virtual Environment
 
-- [ ] In the terminal window run the below: *Ensure the path in the terminal window points to C:\Lab\hello-weather-agent*
+- [ ] Open a terminal window (as needed) and run the below: *Ensure the path in the terminal window points to C:\Lab\hello-weather-agent*
 
   ```bash
   python -m venv .venv
   .venv\Scripts\activate
   ```
 
-This will created the virtual environment. Leave the terminal window active for subsequent commands.
+This will create the virtual environment. Leave the terminal window active for subsequent commands.
 
 ## Step 5 — Install Python Dependencies
 
@@ -99,16 +99,17 @@ This will created the virtual environment. Leave the terminal window active for 
   ```bash
   uvx --from git+https://github.com/github/spec-kit.git specify init --here
   ```
+  Select/type **Y** for the warning on overwriting existing files
 
 - [ ] In the "Choose your AI Assitant" prompt, select copilot (Github Copilot).
 
   ![Assistant](.\Images\4.png)
 
-- [ ] In the "Choose script type", select ps (PowerShell). Navigate using arrow keys and hit enter
+- [ ] In the "Choose script type", select ps (PowerShell).
 
   ![Script](.\Images\5.png)
 
-**You may see errors related to Git Initialization. Please ignore.**
+**You may see errors/warnings related to Git which can be ignored.**
 
 - [ ] Open GitHub Copilot in Visual Studio Code.
   
@@ -121,7 +122,7 @@ This will created the virtual environment. Leave the terminal window active for 
   /speckit
   ```
 
-- [ ] You should see the below SpecKit prompt:
+- [ ] You should see the below SpecKit prompts. This confirms that the above installs completed successfully:
 
   ![Speckit](.\Images\6.png)
 
@@ -135,10 +136,11 @@ This will created the virtual environment. Leave the terminal window active for 
 - [ ] Ensure the **GPT-5-Codex(Preview)** model is selected as shown in the below image.
 
   ![Speckit](.\Images\7.png)
+  
 
 ## Step 7 — Create Microsoft Foundry Resource and Deploy a Model
 
-- In the Lab VM, Get the Subscription and User details for the instructions here below, see below image.
+- In the Lab VM, Get the Subscription and User details for the instructions below, see below image for details.
 
   ![ResourcePage](.\Images\8.png)
 
@@ -151,7 +153,7 @@ This will created the virtual environment. Leave the terminal window active for 
   # Set your subscription. Use the resources section on the right hand <Image place holder>
   az account set --subscription "your-subscription-id"
   
-  # Create a resource group (if needed)
+  # Create a resource group
   az group create --name "rg-aifoundry-demo" --location "eastus"
   ```
 
