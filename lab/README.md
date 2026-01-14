@@ -60,4 +60,4 @@ By the end of this lab, you will have:
 - Azure OpenAI resource
 - Spec Kit installed via UVX
 
-Lets get started - Proceed to [01-Prerequisites](../01-prerequisites/README.md) once these prerequisites are met.
+Lets get started - Proceed to [01-Prerequisites](https://raw.githubusercontent.com/raghu4sangeeth/TechConnect-2026-LAB-1073-Building-intelligent-multi-agent-Apps-with-GH-Speckit-and-Agent-Framework/refs/heads/main/lab/01-prerequisites/README.md){:target="_blank"} once these prerequisites are met.
