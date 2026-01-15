@@ -30,9 +30,32 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
   - GitHub Copilot Chat
   - Azure Tools (optional, but useful for portal interactions)
 
-## Step 1: Run quick spot checks (Optional)
+## Step 1: Sign in to Visual Studio Code
 
-- [ ] Open Visual Studio Code
+- In the Lab VM, Get the Subscription and User details for the instructions below, see below image for details.
+
+  ![ResourcePage](./images/8.png)
+
+- [ ] Open a browser
+- [ ] Login at **<https://github.com/skillable-events>** with Azure Portal user credentials from the resource page (see above picture).
+- [ ] Keep the logged-in browser tab open to keep your Github session active.
+- [ ] Open Visual Studio Code.
+- [ ] Use Github login option in VS Code to sign in if not signed in already.
+
+  ![login](./images/10.png)
+
+- [ ] Select **Continue with Github**.
+
+  ![Github](./images/11.png)
+
+- [ ] Authenticate profile through SSO portal.
+
+  ![Git](./images/9.png)
+
+- [ ] You should be authenticated succesfully. Follow the browser prompts to complete authentication.
+
+## Step 2 — Prepare VS Code
+
 - [ ] Launch a new terminal in VS Code
 
   ![NewTerminal](./images/2.png)
@@ -48,8 +71,12 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
   The output would be **similar** to the below:
 
     ![Output](./images/3.png)
+- [ ] Login to Azure using the AZ command in terminal
 
-## Step 2 — Prepare VS Code
+  ```powershell
+  # Login to Azure - Use the credentials from above
+  az login
+  ```
 
 - [ ] Ensure the below Visual Studio Code extensions are installed
 
@@ -57,7 +84,6 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 ## Step 3 — Create the Workspace Folder
 
-- [ ] In the terminal window in VS Code:
 - [ ] Create a folder under C:\Lab (eg., hello-weather-agent) by using the below command.
 
   ```bash
@@ -112,12 +138,9 @@ This will create the virtual environment. Leave the terminal window active for s
 
 **You may see errors/warnings related to Git which can be ignored.**
 
-- [ ] Open GitHub Copilot in Visual Studio Code.
-  
- > [!CAUTION]
- > You may have to signin using an account with copilot capabilities.
+- [ ] Open GitHub Copilot in Visual Studio Code, if not already open.
 
-- [ ] Once opened, In the chat window ensure Agent mode is selected and then type:
+- [ ] Once opened, in the chat window ensure Agent mode is selected and then type:
 
   ```bash
   /speckit
@@ -134,76 +157,20 @@ This will create the virtual environment. Leave the terminal window active for s
   - [ ] speckit.tasks/
   - [ ] speckit.implement/
 
-- [ ] Ensure Github Copilot is open and available.
-
 - [ ] Ensure the **GPT-5-Codex(Preview)** model is selected as shown in the below image.
 
   ![Speckit](./images/7.png)
   
-## Step 7 — Create Microsoft Foundry Resource and Deploy a Model (Optional)
-
-- These resources should already be created in the lab vm. Skip this step if you are able to see those resources in the subscription. [REMOVE STEP ONCE ARM DEPLOYMENT IS CONFIRMED]
-
-- In the Lab VM, Get the Subscription and User details for the instructions below, see below image for details.
-
-  ![ResourcePage](./images/8.png)
-
-- [ ] **Set up prerequisites**
+## Step 7 — Verify foundry resource and model in Azure
+  
+- [ ] Verify automated deployment of foundry resources, see expected results below.  
 
   ```powershell
-  # Login to Azure
-  az login
-  
-  # Set your subscription. Use the resources section on the right hand <Image place holder>
-  az account set --subscription "your-subscription-id"
-  
-  # Create a resource group
-  az group create --name "rg-aifoundry-demo" --location "eastus"
+  # List deployments in the resource group
+  az resource list --resource-group ResourceGroup1 --query "[].{name:name, type:type}" --output table
   ```
 
-- [ ] **Create Azure AI Foundry Hub and Project**
-
-  ```powershell
-  # Install the Azure ML extension
-  az extension add --name ml
-  
-  # Create Azure AI Hub
-  az ml workspace create `
-    --kind hub `
-    --resource-group "rg-aifoundry-demo" `
-    --name "ai-hub-demo" `
-    --location "eastus"
-  
-  # Create Azure AI Project (within the hub)
-  az ml workspace create `
-    --kind project `
-    --resource-group "rg-aifoundry-demo" `
-    --name "ai-project-demo" `
-    --location "eastus" `
-    --hub-id "/subscriptions/<subscription-id>/resourceGroups/rg-aifoundry-demo/providers/Microsoft.MachineLearningServices/workspaces/ai-hub-demo"
-  ```
-
-- [ ] **Deploy a Model**
-
-  ```powershell
-  # Deploy GPT-4o model (example)
-  az ml online-deployment create `
-    --resource-group "rg-aifoundry-demo" `
-    --workspace-name "ai-project-demo" `
-    --name "gpt-4o-deployment" `
-    --model "azureai://registries/azureml/models/gpt-4o/versions/latest" `
-    --instance-type "Standard_DS3_v2" `
-    --instance-count 1
-  ```
-
-- [ ] **Verify Deployment**
-
-  ```powershell
-  # List deployments in the workspace
-  az ml online-deployment list `
-    --resource-group "rg-aifoundry-demo" `
-    --workspace-name "ai-project-demo"
-  ```
+  ![alt text](./images/12.png)
 
 ## Human-in-the-Loop Disclaimer
 
