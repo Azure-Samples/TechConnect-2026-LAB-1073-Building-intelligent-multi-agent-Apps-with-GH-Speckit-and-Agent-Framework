@@ -62,7 +62,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 - [ ] Execute the below commands in terminal
 
-  ```bash
+  ```powershell
   python --version
   git --version
   az version
@@ -87,7 +87,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 - [ ] Create a folder under C:\Lab (eg., hello-weather-agent) by using the below command.
 
-  ```bash
+  ```powershell
   cd c:\lab
   mkdir hello-weather-agent
   cd hello-weather-agent
@@ -95,7 +95,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 - [ ] Launch **Visual Studio Code** from this folder using the below command and select the checkbox and "Yes, I trust the authors"
 
-  ```bash
+  ```powershell
   code . --reuse-window
   ```
 
@@ -103,7 +103,7 @@ Establish the tools and workspace needed for the Hello Weather lab before drafti
 
 - [ ] Open a terminal window (as needed) and run the below: *Ensure the path in the terminal window points to C:\Lab\hello-weather-agent*
 
-  ```bash
+  ```powershell
   python -m venv .venv
   .venv\Scripts\activate
   ```
@@ -114,7 +114,7 @@ This will create the virtual environment. Leave the terminal window active for s
 
 - [ ] In the terminal window run the below command to install the required packages.
 
-  ```bash
+  ```powershell
   pip install -U agent-framework --pre fastapi uvicorn jinja2 python-dotenv
   ```
 
@@ -124,7 +124,7 @@ This will create the virtual environment. Leave the terminal window active for s
 
 - [ ] In the terminal window run the below to install the Spec Kit dependencies.
 
-  ```bash
+  ```powershell
   uvx --from git+https://github.com/github/spec-kit.git specify init --here
   ```
 
@@ -144,7 +144,7 @@ This will create the virtual environment. Leave the terminal window active for s
 
 - [ ] Once opened, in the chat window ensure Agent mode is selected and then type:
 
-  ```bash
+  ```powershell
   /speckit
   ```
 
